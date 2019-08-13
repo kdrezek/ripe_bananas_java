@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Implementation-Title: RipeBananas
+Implementation-Title: spring-boot-mvc
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: steve
+Built-By: treyw
 Implementation-Vendor-Id: com.ripe
-Build-Jdk: 1.8.0_191
+Build-Jdk: 1.8.0_221
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/RipeBananas
+ ot-starter-parent/spring-boot-mvc
 Created-By: Maven Integration for Eclipse
 
