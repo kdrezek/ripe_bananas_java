@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ripe.models.Movie;
+import com.ripe.services.MovieRepository;
 
 @Service
 public class MovieService {
