@@ -68,7 +68,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 
 	
 	@Override
@@ -91,6 +90,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+		
 		User other = (User) obj;
 		if (email == null) {
 			if (other.email != null)
