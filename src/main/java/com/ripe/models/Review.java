@@ -18,7 +18,7 @@ public class Review {
 	private int id;
 	
 	@Column(nullable = false)
-	private String author;	
+	private int author;
 	
 	@Column(nullable = false)
 	private int rating;
@@ -30,7 +30,7 @@ public class Review {
 	private Date date;
 	
 	@Column(nullable = false)
-	private String poster;
+	private int title;
 
 	public int getId() {
 		return id;
@@ -40,11 +40,11 @@ public class Review {
 		this.id = id;
 	}
 
-	public String getAuthor() {
+	public int getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(int author) {
 		this.author = author;
 	}
 
@@ -72,27 +72,29 @@ public class Review {
 		this.date = date;
 	}
 	
-	public String getPoster() {
-		return poster;
+	public int getTitle() {
+		return title;
 	}
 
-	public void setPoster(String poster) {
-		this.poster = poster;
+	public void setTitle(int title) {
+		this.title = title;
 	}
 	
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + rating;
-		result = prime * result + id;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + author;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result + ((poster == null) ? 0 : poster.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + id;
+		result = prime * result + rating;
+		result = prime * result + title;
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -101,41 +103,32 @@ public class Review {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		
 		Review other = (Review) obj;
-		if (author == null) {
-			if (other.author != null)
-				return false;
-		} else if (!author.equals(other.author))
+		if (author != other.author)
 			return false;
-		
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		
-		if (id != other.id)
-			return false;
-		
 		if (date == null) {
 			if (other.date != null)
 				return false;
 		} else if (!date.equals(other.date))
 			return false;
-		
-		if (poster == null) {
-			if (other.poster != null)
+		if (description == null) {
+			if (other.description != null)
 				return false;
-		} else if (!poster.equals(other.poster))
+		} else if (!description.equals(other.description))
+			return false;
+		if (id != other.id)
+			return false;
+		if (rating != other.rating)
+			return false;
+		if (title != other.title)
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Review [id=" + id + ", author=" + author + ", rating=" + rating 
-				+ ", description=" + description + ", date=" + date + ", poster=" + poster + "]";
+				+ ", description=" + description + ", date=" + date + ", title=" + title + "]";
 	}
 
 }

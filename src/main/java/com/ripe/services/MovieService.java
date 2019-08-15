@@ -18,8 +18,8 @@ public class MovieService {
 		return movieRepository.save(movie);
 	}
 	
-	public Optional<Movie> getMovieByPoster(String poster){
-		return movieRepository.findById(poster);
+	public Optional<Movie> getMovieById(int id){
+		return movieRepository.findById(id);
 	}
 
 }
