@@ -4,38 +4,36 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="movie_tbl")
-
 public class Movie {
 	
+	
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String poster;
+	private int id;
 	
 	@Column(nullable = false)
 	private String title;	
-	
-
-	@Column(nullable = false)
-	private String genre;
 	
 	@Column(nullable = false)
 	private String description; 
 	
 	@Column(nullable = false)
-	private int numrating;
+	private int rating;
 	
 	@Column(nullable = false)
-	private int rating;
+	private int year;
 
-	public String getPoster() {
-		return poster;
+	public int getId() {
+		return id;
 	}
 
-	public void setPoster(String poster) {
-		this.poster = poster;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -46,28 +44,12 @@ public class Movie {
 		this.title = title;
 	}
 
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public int getNumrating() {
-		return numrating;
-	}
-
-	public void setNumrating(int numrating) {
-		this.numrating = numrating;
 	}
 	
 	public int Rating() {
@@ -78,18 +60,23 @@ public class Movie {
 		this.rating = rating;
 	}
 	
+	public int Year() {
+		return year;
+	}
 
-	
+	public void setYear(int year) {
+		this.year = year;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((poster == null) ? 0 : poster.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + numrating;
-		result = prime * result + rating;
-		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + id;
+		result = prime * result + rating;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + year;
 		return result;
 	}
 
@@ -101,50 +88,28 @@ public class Movie {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		
 		Movie other = (Movie) obj;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
-		
-		if (genre == null) {
-			if (other.genre != null)
-				return false;
-		} else if (!genre.equals(other.genre))
-			return false;
-		
-		if (poster != other.poster)
-			return false;
-	
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
+		if (id != other.id)
+			return false;
+		if (rating != other.rating)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (year != other.year)
+			return false;
 		return true;
 	}
-		/* Not sure what to do if it's integer type because it's
-		 * not the same idea as the id in the user route
-		if (numrating == null) {
-			if (other.numrating != null)
-				return false;
-		} else if (!numrating.equals(other.numrating))
-			return false;
-		
-		if (rating == null) {
-			if (other.rating != null)
-				return false;
-		} else if (!rating.equals(other.rating))
-			return false;*/
 
 	@Override
 	public String toString() {
-		return "Movie [poster=" + poster + ", title=" + title + ", genre=" + genre 
-				+ ", description=" + description + ", number rating=" + numrating + 
-				", rating=" + rating + "]";
+		return "Movie [id=" + id + ", title=" + title + ", description=" + description + ", rating=" + rating + ", year=" + year + "]";
 	}
-	
-
 }

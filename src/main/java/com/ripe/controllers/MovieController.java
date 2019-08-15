@@ -23,13 +23,13 @@ public class MovieController {
 	MovieService movieService;
 	
 	@PostMapping("/register")
-	public Movie createUsers(@Valid @RequestBody Movie movie) {
+	public Movie createMovies(@Valid @RequestBody Movie movie) {
 		return movieService.save(movie);
 	}
 	
-	@GetMapping("/{poster}")
-	public Optional<Movie> getRecord(@PathVariable String poster) {
-		return movieService.getMovieByPoster(poster);
+	@GetMapping("/{id}")
+	public Optional<Movie> getRecord(@PathVariable int id) {
+		return movieService.getMovieById(id);
 	}
 
 }
