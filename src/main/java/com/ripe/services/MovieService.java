@@ -1,5 +1,6 @@
 package com.ripe.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,10 @@ public class MovieService {
 		return movieRepository.save(movie);
 	}
 	
-	public Optional<Movie> getMovieById(int id){
-		return movieRepository.findById(id);
-	}
+//	public List<Movie> getMoviesById(Iterable<String> id){
+//		return movieRepository.findAllById(id);
+//	}
+	
 
 }
+

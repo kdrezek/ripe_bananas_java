@@ -1,10 +1,9 @@
 package com.ripe.controllers;
 
-import java.util.Optional;
-
-import javax.validation.Valid;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,18 +16,19 @@ import com.ripe.services.ReviewService;
 
 @RestController
 @RequestMapping("/reviews")
+@CrossOrigin(origins= {"*", "http://localhost:3000"})
 public class ReviewController {
 
 	@Autowired
 	ReviewService reviewService;
 	
 	@PostMapping("/register")
-	public Review createReviews(@Valid @RequestBody Review review) {
-		return reviewService.save(review);
+	public Review createReviews(@RequestBody Review review) {
+		return this.reviewService.save(review);
 	}
 	
-	@GetMapping("/{id}")
-	public Optional<Review> getRecord(@PathVariable int id) {
-		return reviewService.getReviewById(id);
+	@GetMapping("/{movieId}")
+	public List<Review> getRecord(@PathVariable String movieId) {
+		return this.reviewService.getReviewsById(movieId);
 	}
 }
