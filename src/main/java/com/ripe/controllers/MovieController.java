@@ -1,9 +1,5 @@
 package com.ripe.controllers;
 
-import java.util.Optional;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,14 +18,14 @@ public class MovieController {
 	@Autowired
 	MovieService movieService;
 	
-	@PostMapping("/register")
-	public Movie createMovies(@Valid @RequestBody Movie movie) {
+	@PostMapping("/t")
+	public Movie createMovies( @RequestBody Movie movie) {
 		return movieService.save(movie);
 	}
-	
-	@GetMapping("/{id}")
-	public Optional<Movie> getRecord(@PathVariable int id) {
-		return movieService.getMovieById(id);
-	}
+//	
+//	@GetMapping("/{id}")
+//	public Movie getRecords(@PathVariable String id) {
+//		return movieService.getMoviesById(id);
+//	}
 
 }

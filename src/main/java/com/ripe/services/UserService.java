@@ -3,6 +3,8 @@ package com.ripe.services;
 
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import com.ripe.repositories.UserRepository;
 public class UserService {
 	
 	@Autowired
+	EntityManager entityManager;
+	
 	UserRepository userRepository;
 	
 	public User save(User user){

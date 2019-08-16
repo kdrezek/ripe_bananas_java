@@ -7,5 +7,5 @@ import com.ripe.models.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
-	
+//	public findAllReviewsById(int i)
 }

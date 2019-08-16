@@ -1,6 +1,9 @@
 package com.ripe.services;
 
+import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,14 +15,18 @@ import com.ripe.services.MovieRepository;
 public class MovieService {
 	
 	@Autowired
+	EntityManager entityManager;
+	
 	MovieRepository movieRepository;
 	
 	public Movie save(Movie movie){
 		return movieRepository.save(movie);
 	}
 	
-	public Optional<Movie> getMovieById(int id){
-		return movieRepository.findById(id);
-	}
+//	public List<Movie> getMoviesById(Iterable<String> id){
+//		return movieRepository.findAllById(id);
+//	}
+	
 
 }
+

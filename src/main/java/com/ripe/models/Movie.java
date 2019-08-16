@@ -1,30 +1,38 @@
 package com.ripe.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="movie_tbl")
+@Table(name = "movie_tbl")
 public class Movie {
-	
-	
-	@Id
+
+//	@ManyToOne(targetEntity = Review.class)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private int id;
-	
+
+
 	@Column(nullable = false)
-	private String title;	
-	
+	private String title;
+
 	@Column(nullable = false)
-	private String description; 
-	
+	private String description;
+
 	@Column(nullable = false)
 	private int rating;
-	
+
 	@Column(nullable = false)
 	private int year;
 
@@ -51,16 +59,16 @@ public class Movie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public int Rating() {
+
+	public int getRating() {
 		return rating;
 	}
 
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	
-	public int Year() {
+
+	public int getYear() {
 		return year;
 	}
 
@@ -110,6 +118,10 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", description=" + description + ", rating=" + rating + ", year=" + year + "]";
+		return "Movie [id=" + id + ", title=" + title + ", description=" + description + ", rating=" + rating
+				+ ", year=" + year + "]";
 	}
+
+	
+
 }
