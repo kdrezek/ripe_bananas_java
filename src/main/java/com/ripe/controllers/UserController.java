@@ -86,7 +86,7 @@ public class UserController {
 				new ApiToken(Jwts.builder()
 						.setSubject("Token")
 						.claim("roles", "user")
-						.claim("id", user.getId())
+						.claim("id", user.getUserId())
 						.claim("email", user.getEmail())
 						.claim("firstname", user.getFirstname())
 						.claim("lastname", user.getLastname())
