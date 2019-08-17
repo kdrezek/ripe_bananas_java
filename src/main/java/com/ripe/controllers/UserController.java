@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,8 +38,36 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<User> getRecord(@PathVariable int id) {
+	public User getRecord(@PathVariable int id) {
 		return userService.getUserById(id);
+	}
+	
+	@PutMapping("/{field}/{id}")
+	public ResponseEntity<User> updateUser(@RequestBody User details, @PathVariable String field, @PathVariable int id) {
+		User updatedUser = userService.getUserById(id);
+
+		// Update field using switch
+		switch (field) {
+		case "email":
+			updatedUser.setEmail(details.getEmail());
+			break;
+		case "password":
+			updatedUser.setPassword(details.getPassword());
+			break;
+		case "name":
+			if(!details.getFirstname().equals("")) {
+				updatedUser.setFirstname(details.getFirstname());
+			}
+			if(!details.getLastname().equals("")) {
+				updatedUser.setLastname(details.getLastname());
+			}
+		}
+
+		// Update the record
+		User update = userService.updateUser(updatedUser);
+
+		// return updated user
+		return ResponseEntity.ok().body(update);
 	}
 	
 
