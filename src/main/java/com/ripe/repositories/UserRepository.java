@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.ripe.models.User;
@@ -12,7 +13,7 @@ import com.ripe.models.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
 //    @Query(value = "Select u from User where email=:email and password=:password")
-		User findByEmail(String email);
+		User findByEmail(String string);
 		User findByPassword(String password);
 
 }
