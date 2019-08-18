@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +22,8 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	public User findByEmail(String email) {
-		return userRepository.findByEmail(email);
+	public User findByEmail(String string) {
+		return userRepository.findByEmail(string);
 	}
 	
 	public User findByPassword(String password) {

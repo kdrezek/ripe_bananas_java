@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins="*")
 public class UserController {
 	
 	@Autowired
@@ -37,9 +39,28 @@ public class UserController {
 		return userService.save(user);
 	}
 	
-	@GetMapping("/{id}")
-	public User getRecord(@PathVariable int id) {
-		return userService.getUserById(id);
+//	@GetMapping("/{id}")
+//	public User getRecordbyId(@PathVariable int id) {
+//		return userService.getUserById(id);
+//	}
+	
+//	@GetMapping("/em")
+//	public User getRecordbyEmail(@RequestBody User user) {
+//		System.out.println(user.getEmail());
+//		return userService.findByEmail(user.getEmail());
+//	}
+//	
+//	@GetMapping("/em")
+//	public User getRecordbyEmail(@RequestBody User user) {
+//		System.out.println(user.getEmail());
+//		return userService.findByEmail(user.getEmail());
+//	}
+	
+	@PostMapping("/em")
+	public ResponseEntity<User> getRecordbyEmail(@RequestBody User user) {
+		System.out.println(user.getEmail());
+		User userByEmail = userService.findByEmail(user.getEmail());
+		return ResponseEntity.ok().body(userByEmail);
 	}
 	
 	@PutMapping("/{field}/{id}")
@@ -74,13 +95,9 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody User user) {
 		
-			System.out.println("dont worry, im a professional");
 			User checked1 = userService.findByEmail(user.getEmail());
 			User checked2 = userService.findByPassword(user.getPassword());
-			System.out.println(checked1);
-			System.out.println(checked2);
-			System.out.println(checked1 == checked2);
-//		}
+
 		if(checked1 != null && checked1 == checked2) {
 		return new ResponseEntity<ApiToken>(
 				new ApiToken(Jwts.builder()
